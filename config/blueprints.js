@@ -25,80 +25,24 @@
 
 module.exports.blueprints = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Action routes speed up the backend development workflow by               *
-  * eliminating the need to manually bind routes. When enabled, GET, POST,   *
-  * PUT, and DELETE routes will be generated for every one of a controller's *
-  * actions.                                                                 *
-  *                                                                          *
-  * If an `index` action exists, additional naked routes will be created for *
-  * it. Finally, all `actions` blueprints support an optional path           *
-  * parameter, `id`, for convenience.                                        *
-  *                                                                          *
-  * `actions` are enabled by default, and can be OK for production--         *
-  * however, if you'd like to continue to use controller/action autorouting  *
-  * in a production deployment, you must take great care not to              *
-  * inadvertently expose unsafe/unintentional controller logic to GET        *
-  * requests.                                                                *
-  *                                                                          *
-  ***************************************************************************/
+  //  optional mount path prefix for blueprints
+  //  if the prefix is 'api' then the routes become prefixed with '/api/'
+  prefix: '',
 
-  // actions: true,
+  // routes are automatically generated for every action in controllers
+  // also the index is mapped to /:controller
+  actions: true,
 
-  /***************************************************************************
-  *                                                                          *
-  * RESTful routes (`sails.config.blueprints.rest`)                          *
-  *                                                                          *
-  * REST blueprints are the automatically generated routes Sails uses to     *
-  * expose a conventional REST API on top of a controller's `find`,          *
-  * `create`, `update`, and `destroy` actions.                               *
-  *                                                                          *
-  * For example, a BoatController with `rest` enabled generates the          *
-  * following routes:                                                        *
-  * :::::::::::::::::::::::::::::::::::::::::::::::::::::::                  *
-  *  GET /boat -> BoatController.find                                        *
-  *  GET /boat/:id -> BoatController.findOne                                 *
-  *  POST /boat -> BoatController.create                                     *
-  *  PUT /boat/:id -> BoatController.update                                  *
-  *  DELETE /boat/:id -> BoatController.destroy                              *
-  *                                                                          *
-  * `rest` blueprint routes are enabled by default, and are suitable for use *
-  * in a production scenario, as long you take standard security precautions *
-  * (combine w/ policies, etc.)                                              *
-  *                                                                          *
-  ***************************************************************************/
+  // All Basic Crud operations
+  // Only Use In Development
+  shortcuts: true,
 
-  // rest: true,
+  // Automatic REST blueprints created (GET/POST/PUT/DELETE) for each action
+  rest: true,
 
-  /***************************************************************************
-  *                                                                          *
-  * Shortcut routes are simple helpers to provide access to a                *
-  * controller's CRUD methods from your browser's URL bar. When enabled,     *
-  * GET, POST, PUT, and DELETE routes will be generated for the              *
-  * controller's`find`, `create`, `update`, and `destroy` actions.           *
-  *                                                                          *
-  * `shortcuts` are enabled by default, but should be disabled in            *
-  * production.                                                              *
-  *                                                                          *
-  ***************************************************************************/
-
-  // shortcuts: true,
-
-  /***************************************************************************
-  *                                                                          *
-  * An optional mount path for all blueprint routes on a controller,         *
-  * including `rest`, `actions`, and `shortcuts`. This allows you to take    *
-  * advantage of blueprint routing, even if you need to namespace your API   *
-  * methods.                                                                 *
-  *                                                                          *
-  * (NOTE: This only applies to blueprint autoroutes, not manual routes from *
-  * `sails.config.routes`)                                                   *
-  *                                                                          *
-  ***************************************************************************/
-
-  // prefix: '',
-
+  //  If a blueprint route catches a request,
+  //  only match  :id param if its an integer
+  expectedIntegerId: false
   /***************************************************************************
   *                                                                          *
   * Whether to pluralize controller names in blueprint routes.               *

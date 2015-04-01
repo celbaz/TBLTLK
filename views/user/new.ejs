@@ -1,0 +1,13 @@
+<h1>User SignUp Form</h1>
+
+<form class="" action="/user/create" method="POST">
+  <h2> Create an Account</h2>
+  <input type="text" name="name" placeholder="Your Name">
+  <input type="text" name="title" placeholder="Your Title">
+  <input type="text" name="email" placeholder="Your Email">
+  <input type="password" name="password" placeholder="Password" >
+  <input type="password" name="password-confirm" placeholder="Password Again">
+
+  <input type="submit" value="Create Account">
+  <input type="hidden" name="_csrf" value="<%= _csrf %>">
+</form>
